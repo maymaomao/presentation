@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predict Profit Based on Population</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predict Profit Based on Population">
+  <meta name="author" content="maymaomao">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predict Profit Based on Population</h1>
+    <h2>Develop Data Product Project Presentaiton in Coursera</h2>
+    <p>maymaomao<br/>Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I will implement linear regression with one variable to predict profits for a food truck.Suppose you are the CEO of a restaurant franchise and are considering different cities for opening a new outlet. The chain already has trucks in various cities and you have data for profits and populations from the cities.</p>
+
+<p>You would like to use this data to help you select which city to expand to next.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>See Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The file data1.txt contains the dataset for our linear regression. Let&#39;s see the original data first,there are two columns representing Population of City in 10,000s and Profit in $10,000s.</p>
+
+<pre><code class="r">rdata&lt;-read.table(&quot;../data1.txt&quot;,sep=&quot;,&quot;,header = F)
+names(rdata)&lt;-c(&quot;population&quot;,&quot;profit&quot;)
+head(rdata)
+</code></pre>
+
+<pre><code>##   population  profit
+## 1     6.1101 17.5920
+## 2     5.5277  9.1302
+## 3     8.5186 13.6620
+## 4     7.0032 11.8540
+## 5     5.8598  6.8233
+## 6     8.3829 11.8860
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Plotting</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Scatter plot to visualize the data.</p>
+
+<p><img src="assets/fig/plotting-1.png" alt="plot of chunk plotting"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Get the intercept and slope of the &quot;best&quot; straight line.</p>
+
+<pre><code class="r">fit&lt;-lm(profit~population,data=data)
+intercept&lt;-fit$coefficients[1]
+slope&lt;-fit$coefficients[2]
+fit$coefficients
+</code></pre>
+
+<pre><code>## (Intercept)  population 
+##   -3.895781    1.193034
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When the population is 11.03 , using the &quot;best&quot; line to predict its profit:</p>
+
+<pre><code class="r">predict_population=11.03
+slope*predict_population+intercept
+</code></pre>
+
+<pre><code>## population 
+##    9.26338
+</code></pre>
+
+<p>You can see the shinyapp on  <a href="http://maymaomao.shinyapps.io/devpro">http://maymaomao.shinyapps.io/devpro</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='See Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Plotting'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Linear Regression'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Prediction'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
